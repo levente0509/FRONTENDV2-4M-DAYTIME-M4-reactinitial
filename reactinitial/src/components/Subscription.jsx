@@ -8,6 +8,7 @@ function Subscription() {
     const [email, setEmail] = useState("")
     const [fetchSend, setFetchSend] = useState(false)
     const [showInput, setShowInput] = useState(true)
+    const [postDone, setPostDone] = useState(false)
 
     const handleClick=()=>{
         setShowInput(false)
@@ -21,6 +22,7 @@ function Subscription() {
         .then((data)=>{
             console.log(data);
             setFetchSend(false)
+            setPostDone(true)
         })
     }
         
@@ -29,6 +31,15 @@ function Subscription() {
                 setOpen(true)
             }, 2000);
         },[])
+
+        useEffect(()=>{
+            if(postDone === true){
+                setTimeout(() => {
+                    setOpen(false)
+                }, 5000);
+            }
+        },[postDone])
+
   return (
 <Dialog open={open}>
       <DialogTitle>Subscribe</DialogTitle>
@@ -47,6 +58,10 @@ function Subscription() {
         </>
       )}
       {fetchSend && <LoadingMask/>}
+      {postDone &&
+      <DialogContentText>Subscribed!</DialogContentText>
+}
+      
     </Dialog>
   )
 }
