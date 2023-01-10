@@ -1,10 +1,13 @@
+import { Box, CircularProgress } from '@mui/material'
 import React from 'react'
 
 function LoadingMask() {
   return (
-    <div>
+    <Box>
       Loading...
-    </div>
+      <br />
+      <CircularProgress/>
+    </Box>
   )
 }
 
