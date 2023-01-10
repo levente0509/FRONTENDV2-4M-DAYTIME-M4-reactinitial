@@ -29,7 +29,7 @@ function Subscription() {
         useEffect(()=>{
             setTimeout(() => {
                 setOpen(true)
-            }, 2000);
+            }, 10000);
         },[])
 
         useEffect(()=>{
